@@ -1,0 +1,45 @@
+{
+  "name": "sumoll/api",
+  "type": "project",
+  "description": "Sumoll but effective light api framework",
+  "homepage": "https://github.com/tyraelll/sumoll-api",
+  "version": "0.1",
+  "autoload": {
+    "psr-4": {
+      "sumollapi\\": "app/"
+    },
+    "classmap": [
+      "app/Database",
+      "app/Helpers",
+      "app/Repository",
+      "app/Models",
+      "app/Controllers",
+      "app/Config",
+      "app/Bootstrap",
+      "app/Response",
+      "app/Session",
+      "app/Middleware",
+      "app/Router"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Omer ATAGUN",
+      "email": "omratagn@gmail.com",
+      "homepage": "https://itstoritveomeratagun.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^7.2",
+    "php" : ">=8.0",
+    "illuminate/http": "^7.30",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-redis": "*"
+  },
+  "minimum-stability": "stable",
+  "require-dev": {
+    "phpunit/phpunit": "9.*"
+  }
+}
