@@ -15,11 +15,7 @@ Class Config implements ConfigInterface
             'DB_USER' => 'root',
             'DB_PASS' => '',
             'DB_NAME' => 'sumoll',
-
             'REDIS_SERVER' => '127.0.0.1',
-            //game specific configuration//
-            'GAME_DATE' => date("Y-m-d H:i:s"),
-            'GAME_TIME' => date('H:i'),
             'ControllerNameSpace' => '\\sumollapi\\Controllers\\'
         ];
     }
@@ -32,7 +28,4 @@ Class Config implements ConfigInterface
         return $this->config[$key];
     }
 
-    public function convertToJson(array $data){
-        return ToJson::convertToJson($data);
-    }
 }
