@@ -18,7 +18,7 @@ class RouteProvider implements RouterInterface
 
     public function parseRoutes(array $routes)
     {
-        return $routes;//include_once(Constants::APP_PATH.'Router/Router.php');
+        return $routes;
     }
 
 }
