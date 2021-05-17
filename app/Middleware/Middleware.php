@@ -38,8 +38,7 @@ class Middleware implements MiddlewareInterface
         $this->controllerPointer = $this->config->get('ControllerNameSpace').$this->http->getRequestedUrl();
     }
 
-    public function forwardRequest()
-    {
+    public function filterRequest(){
 
         if (Find::keyInArray($this->publicRoutes, $this->http->getRequestedUrl()))
             return $this->publicRequests($this->publicRoutes[$this->http->getRequestedUrl()]);
@@ -57,11 +56,8 @@ class Middleware implements MiddlewareInterface
     }
 
     private function authenticatedRequests(string $method, SessionInterface $session){
-            if (!$session->logged()){
-                return new Response('Unauthorized',StatusCodes::$unAuthorized);
-            }
 
-        return $this->requestBuilder($method);
+            return $session->logged() ? $this->requestBuilder($method) : new Response('Unauthorized',StatusCodes::$unAuthorized);
 
     }
 
@@ -73,6 +69,7 @@ class Middleware implements MiddlewareInterface
 
         if($this->http->getRequestedUrlWithId())
             return $this->router->get(new $this->controllerPointer(), $method,$this->http->getRequestedUrlWithId());
+
 
         return $this->router->get(new $this->controllerPointer(), $method);
     }

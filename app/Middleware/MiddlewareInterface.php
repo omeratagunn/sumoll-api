@@ -5,6 +5,6 @@ namespace sumollapi\Middleware;
 
 interface MiddlewareInterface
 {
-    public function forwardRequest();
+    public function filterRequest();
 
 }

@@ -7,11 +7,7 @@ namespace sumollapi\Helpers;
 trait IsThis
 {
     public static function userName(string $username){
-        if(preg_match('/^[a-z\d\s_]{3,30}$/i', $username)) {
-            return true;
-        } else {
-            return false;
-        }
+        return preg_match('/^[a-z\d\s_]{3,30}$/i', $username) ? true : false;
     }
 
 }

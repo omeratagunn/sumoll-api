@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 use sumollapi\Router\RouterInterface;
 use sumollapi\Router\RouteProvider;
 use sumollapi\Controllers\Index;
-use Illuminate\Contracts\Routing\ResponseFactory;
+use sumollapi\Response\Response;
 final class TestRouter extends TestCase
 {
     private function viaRouter(RouterInterface $router){
@@ -16,7 +16,7 @@ final class TestRouter extends TestCase
 
     public function test_router_returns_expected_class(){
         $router = new RouteProvider();
-        $this->assertInstanceOf(\sumollapi\Response\Response::class,$router->get(new Index(), 'index'));
+        $this->assertInstanceOf(Response::class,$router->get(new Index(), 'index'));
 
     }
 
