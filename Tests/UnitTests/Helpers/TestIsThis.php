@@ -17,7 +17,7 @@ class TestIsThis extends TestCase
 
     }
     public function test_if_returns_false_given_string(){
-        $tmpArr = ['john@','george#', 'fury+', 'frank?','lucky/'];
+        $tmpArr = ['john@','george#', 'fury+', 'frank?','lucky/', '1'];
         foreach ($tmpArr as $value){
             $this->assertFalse(IsThis::userName($value));
         }

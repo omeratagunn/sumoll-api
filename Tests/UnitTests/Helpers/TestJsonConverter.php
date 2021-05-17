@@ -15,4 +15,10 @@ class TestJsonConverter extends TestCase
         $this->assertJson($toJson);
     }
 
+    public function test_converts_from_json(){
+        $json = '{"hello":"kitty"}';
+        $toJson = ToJson::decodeFromJson($json);
+        $this->assertIsArray($toJson);
+    }
+
 }

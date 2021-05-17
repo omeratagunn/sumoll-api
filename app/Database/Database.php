@@ -67,7 +67,7 @@ class Database implements DatabaseInterface
         return $this->stmt->execute();
     }
 
-    public function resultset(){
+    public function hasMany(){
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -93,7 +93,7 @@ class Database implements DatabaseInterface
         return $this->dbh->commit();
     }
 
-    public function cancelTransaction(){
+    public function rollBack(){
         return $this->dbh->rollBack();
     }
 

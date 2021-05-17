@@ -4,9 +4,8 @@
 namespace sumollapi\Middleware;
 
 
+use sumollapi\Bootstrap\Configuration;
 use sumollapi\Bootstrap\Http;
-use sumollapi\Config\ConfigInterface;
-use sumollapi\Config\Constant\Constants;
 use sumollapi\Helpers\Find;
 use sumollapi\Helpers\StatusCodes;
 use sumollapi\Response\Response;
@@ -21,21 +20,21 @@ class Middleware implements MiddlewareInterface
     private array $publicRoutes;
     private array $authenticatedRoutes;
 
-    private object $router;
-    private object $http;
-    private object $config;
+    private RouterInterface $router;
+    private Http $http;
+    private Configuration $config;
 
     private string $controllerPointer;
 
 
-    public function __construct(RouterInterface $router, Http $http, ConfigInterface $config){
+    public function __construct(RouterInterface $router, Http $http, Configuration $config){
         $this->router = $router;
         $this->http = $http;
         $this->config = $config;
-        $routes = $router->parseRoutes(include_once(Constants::APP_PATH.'Router/Router.php'));
+        $routes = $router->parseRoutes(include_once(APP_PATH.'/app/Router/Router.php'));
         $this->publicRoutes = $routes['PublicRoutes'];
         $this->authenticatedRoutes = $routes['AuthenticatedRoutes'];
-        $this->controllerPointer = $this->config->get('ControllerNameSpace').$this->http->getRequestedUrl();
+        $this->controllerPointer = $this->config->getControllerPath().$this->http->getRequestedUrl();
     }
 
     public function filterRequest(){

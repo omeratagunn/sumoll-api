@@ -11,7 +11,7 @@ trait ToJson
     }
 
     public static function decodeFromJson(string $value){
-        return json_decode($value);
+        return json_decode($value,true);
     }
 
 }

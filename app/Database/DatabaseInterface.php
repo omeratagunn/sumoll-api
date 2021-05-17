@@ -11,7 +11,7 @@ interface DatabaseInterface
 
     public function execute();
 
-    public function resultset();
+    public function hasMany();
 
     public function single();
 
@@ -23,7 +23,7 @@ interface DatabaseInterface
 
     public function endTransaction();
 
-    public function cancelTransaction();
+    public function rollBack();
 
     public function debugDumpParams();
 

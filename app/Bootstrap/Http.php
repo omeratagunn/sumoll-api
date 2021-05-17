@@ -3,27 +3,14 @@
 
 namespace sumollapi\Bootstrap;
 
-
-use sumollapi\Config\Config;
-use sumollapi\Config\ConfigInterface;
 use sumollapi\Helpers\FirstLetterCapital;
 
 class Http
 {
     private array $url;
-    private  $sessionConfig = [
-            'session.gc_maxlifetime' => '1',
-            'session.cookie_secure' => '1',
-            'session.cookie_httponly' => '1',
-            'session.use_only_cookies' => '1',
-            'session.cookie_lifetime' => 950400,
-        ];
+
 
     public function __construct(){
-
-        $this->sessionConfiguration(new Config());
-        $this->startSession();
-
 
         $s = &$_SERVER;
         $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;
@@ -44,26 +31,10 @@ class Http
         return FirstLetterCapital::make($this->url[3]);
     }
 
-    public function isRequestedUrl() : bool{
-        return $this->url[3] ? true : false;
-    }
     public function getRequestedUrlWithId(){
 
         return isset($this->url[4]) ? $this->url[4] : null;
 
     }
-
-    private function sessionConfiguration() : void{
-            foreach ($this->sessionConfig as $key => $value){
-                ini_set($key, $value);
-            }
-    }
-
-    private function startSession() : void{
-        session_start();
-    }
-
-
-
 
 }
